@@ -34,14 +34,9 @@ function dynamicCartSection(ob,itemCounter)
     boxh4.appendChild(h4Text)
     boxDiv.appendChild(boxh4)
 
-    // console.log(boxContainerDiv);
-
     buttonLink.appendChild(buttonText)
     cartContainer.appendChild(boxContainerDiv)
     cartContainer.appendChild(totalContainerDiv)
-    // let cartMain = document.createElement('div')
-    // cartmain.id = 'cartMainContainer'
-    // cartMain.appendChild(totalContainerDiv)
 
     return cartContainer
 }

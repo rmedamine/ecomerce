@@ -68,14 +68,18 @@ httpRequest.onreadystatechange = function() {
       for (let i = 0; i < contentTitle.length; i++) {
         if (contentTitle[i].isAccessory) {
           console.log(contentTitle[i]);
-          containerAccessories.appendChild(
-            dynamicClothingSection(contentTitle[i])
-          );
+          if (containerAccessories) {
+            containerAccessories.appendChild(
+              dynamicClothingSection(contentTitle[i])
+            );
+          }
         } else {
           console.log(contentTitle[i]);
-          containerClothing.appendChild(
-            dynamicClothingSection(contentTitle[i])
-          );
+          if (containerClothing) {
+            containerClothing.appendChild(
+              dynamicClothingSection(contentTitle[i])
+            );
+          }
         }
       }
     } else {

@@ -3,11 +3,17 @@ body
     margin: 0;
     font-family: 'Lato', sans-serif;
 }
+#mainContainer {
+    /* keep content below the fixed header */
+    padding-top: 95px;
+    box-sizing: border-box;
+}
+
 h1
 {
     width: 90%;
     margin: auto;
-    padding: 50px 0;
+    padding: 20px 0;
     letter-spacing: 2px;
     font-weight: 700;
     text-transform: capitalize;
@@ -75,6 +81,7 @@ h2
     h1
     {
         font-size: 25px;
+        padding: 18px 0;
     }
     #containerClothing, #containerAccessories
     {
@@ -110,6 +117,16 @@ h2
     {
         width: 90%;
     }
+}
+
+@media(max-width: 600px) {
+    /* header may be taller on small screens */
+    #mainContainer { padding-top: 120px; }
+}
+
+@media(max-width: 400px) {
+    #mainContainer { padding-top: 140px; }
+    h1 { padding: 12px 0; }
 }
 @media(max-width: 600px)
 {
