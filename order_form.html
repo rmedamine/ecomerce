@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Passer commande</title>
+
+  <link rel="stylesheet" href="css/order_form.css">
+</head>
+<body>
+
+  <main class="page">
+    <section class="card">
+
+      <h1>Passer commande</h1>
+      <p class="subtitle">
+        Remplissez le formulaire ci-dessous pour finaliser votre commande.
+      </p>
+
+      <form id="orderForm">
+
+        <label>Nom complet *</label>
+        <input
+          type="text"
+          name="fullName"
+          required
+          placeholder="Jean Dupont"
+        >
+
+        <label>Adresse / Ville *</label>
+        <input
+          type="text"
+          name="addressCity"
+          required
+          placeholder="Casablanca, Bourgogne"
+        >
+
+        <label>Numéro de téléphone *</label>
+        <input
+          type="tel"
+          name="phone"
+          required
+          placeholder="06 12 34 56 78"
+        >
+
+        <label>Produit choisi *</label>
+        <select name="product" required>
+          <option value="">-- Sélectionnez un produit --</option>
+          <option>Casquette minimal</option>
+          <option>T-shirt classique</option>
+          <option>Sweat à capuche</option>
+          <option>Chaussures sport</option>
+        </select>
+
+        <!-- hidden input pour panier / items -->
+        <input type="hidden" name="orderItems" id="orderItems">
+
+        <div id="message" class="message"></div>
+
+        <button type="submit" id="submitBtn">
+          Commander via WhatsApp
+        </button>
+
+      </form>
+
+      <p class="note">
+        Les champs marqués d'un * sont obligatoires.
+      </p>
+
+    </section>
+  </main>
+
+  <script src="js/order_form.js"></script>_

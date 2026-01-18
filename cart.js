@@ -41,7 +41,7 @@ function dynamicCartSection(product, qty){
     boxDiv.appendChild(h3)
 
     const h4 = document.createElement('h4')
-    h4.textContent = `Amount: Rs ${product.price}`
+    h4.textContent = `Amount:  ${product.price} DH`
     boxDiv.appendChild(h4)
 
     boxContainerDiv.appendChild(boxDiv)
@@ -56,7 +56,7 @@ function populateOrderForm(items){
         summaryEl.innerHTML = ''
         items.forEach(it=>{
             const li = document.createElement('li')
-            li.textContent = `${it.name} × ${it.quantity}  —  Rs ${it.price}`
+            li.textContent = `${it.name} × ${it.quantity}  —  Dh ${it.price}`
             summaryEl.appendChild(li)
         })
         hiddenInput.value = JSON.stringify(items)
@@ -75,7 +75,7 @@ totalDiv.id = 'total'
 totalContainerDiv.appendChild(totalDiv)
 
 const totalh2 = document.createElement('h2')
-totalh2.textContent = 'Total Amount'
+totalh2.textContent = 'Total'
 totalDiv.appendChild(totalh2)
 
 // To update the total amount and add the place-order button
@@ -84,7 +84,7 @@ function amountUpdate(amount){
     while(totalDiv.childNodes.length>1) totalDiv.removeChild(totalDiv.lastChild)
     const totalh4 = document.createElement('h4')
     totalh4.id = 'toth4'
-    totalh4.textContent = `Amount: Rs ${amount}`
+    totalh4.textContent = `Total a Payé:  ${amount} DH`
     totalDiv.appendChild(totalh4)
     // append button area
     totalDiv.appendChild(buttonDiv)
@@ -169,7 +169,7 @@ httpRequest.onreadystatechange = function(){
     populateOrderForm(orderItems)
 }
 
-httpRequest.open('GET','https://5d76bf96515d1a0014085cf9.mockapi.io/product', true)
+httpRequest.open('GET','/data.json', true)
 httpRequest.send()
 
 

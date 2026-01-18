@@ -29,7 +29,7 @@ function dynamicClothingSection(ob) {
   h4.appendChild(h4Text);
 
   let h2 = document.createElement("h2");
-  let h2Text = document.createTextNode("rs  " + ob.price);
+  let h2Text = document.createTextNode(ob.price + " DH");
   h2.appendChild(h2Text);
 
   boxDiv.appendChild(boxLink);
@@ -50,6 +50,7 @@ function dynamicClothingSection(ob) {
 let mainContainer = document.getElementById("mainContainer");
 let containerClothing = document.getElementById("containerClothing");
 let containerAccessories = document.getElementById("containerAccessories");
+let containerhealty = document.getElementById("containerhealty");
 // mainContainer.appendChild(dynamicClothingSection('hello world!!'))
 
 // BACKEND CALLING
@@ -65,23 +66,32 @@ httpRequest.onreadystatechange = function() {
         var counter = document.cookie.split(",")[1].split("=")[1];
         document.getElementById("badge").innerHTML = counter;
       }
-      for (let i = 0; i < contentTitle.length; i++) {
-        if (contentTitle[i].isAccessory) {
-          console.log(contentTitle[i]);
-          if (containerAccessories) {
-            containerAccessories.appendChild(
-              dynamicClothingSection(contentTitle[i])
-            );
-          }
-        } else {
-          console.log(contentTitle[i]);
-          if (containerClothing) {
-            containerClothing.appendChild(
-              dynamicClothingSection(contentTitle[i])
-            );
-          }
-        }
-      }
+ for (let i = 0; i < contentTitle.length; i++) {
+
+  if (contentTitle[i].category === "healty") {
+    if (containerhealty) {
+      containerhealty.appendChild(
+        dynamicClothingSection(contentTitle[i])
+      );
+    }
+
+  } else if (contentTitle[i].category === "accessory") {
+    if (containerAccessories) {
+      containerAccessories.appendChild(
+        dynamicClothingSection(contentTitle[i])
+      );
+    }
+
+  } else if (contentTitle[i].category === "clothing") {
+    if (containerClothing) {
+      containerClothing.appendChild(
+        dynamicClothingSection(contentTitle[i])
+      );
+    }
+  }
+}
+
+
     } else {
       console.log("call failed!");
     }
@@ -89,7 +99,7 @@ httpRequest.onreadystatechange = function() {
 };
 httpRequest.open(
   "GET",
-  "https://5d76bf96515d1a0014085cf9.mockapi.io/product",
+  "/data.json",
   true
 );
 httpRequest.send();

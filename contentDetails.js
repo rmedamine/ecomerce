@@ -42,8 +42,8 @@ function dynamicContentDetails(ob)
     let detailsDiv = document.createElement('div')
     detailsDiv.id = 'details'
 
-    let h3DetailsDiv = document.createElement('h3')
-    let h3DetailsText = document.createTextNode('Rs ' + ob.price)
+    let h3DetailsDiv = document.createElement('h3') 
+    let h3DetailsText = document.createTextNode( ob.price +' DH')
     h3DetailsDiv.appendChild(h3DetailsText)
 
     let h3 = document.createElement('h3')
@@ -127,7 +127,7 @@ let httpRequest = new XMLHttpRequest()
 {
     httpRequest.onreadystatechange = function()
     {
-        if(this.readyState === 4 && this.status == 200)
+        if(this.readyState === 9 && this.status == 200)
         {
             console.log('connected!!');
             let contentDetails = JSON.parse(this.responseText)
@@ -143,5 +143,21 @@ let httpRequest = new XMLHttpRequest()
     }
 }
 
-httpRequest.open('GET', 'https://5d76bf96515d1a0014085cf9.mockapi.io/product/'+id, true)
-httpRequest.send()  
+httpRequest.open('GET', '/data.json', true); // on charge le fichier complet
+
+httpRequest.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status == 200) {
+        console.log('connected!!');
+        let allProducts = JSON.parse(this.responseText); // tableau dyal products
+        console.log(allProducts);
+
+        // Trouver le product li kaymatch m3a l-id
+        let product = allProducts.find(p => p.id === id);
+        if (product) {
+            dynamicContentDetails(product);
+        } else {
+            console.error("Product not found with id:", id);
+        }
+    }
+};
+httpRequest.send();
