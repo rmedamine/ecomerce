@@ -169,7 +169,7 @@ httpRequest.onreadystatechange = function(){
     populateOrderForm(orderItems)
 }
 
-httpRequest.open('GET','/data.json', true)
+httpRequest.open('GET','./data.json', true)
 httpRequest.send()
 
 

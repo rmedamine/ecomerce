@@ -99,7 +99,7 @@ httpRequest.onreadystatechange = function() {
 };
 httpRequest.open(
   "GET",
-  "/data.json",
+  "./data.json",
   true
 );
 httpRequest.send();

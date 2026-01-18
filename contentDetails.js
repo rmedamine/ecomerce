@@ -143,7 +143,7 @@ let httpRequest = new XMLHttpRequest()
     }
 }
 
-httpRequest.open('GET', '/data.json', true); // on charge le fichier complet
+httpRequest.open('GET', './data.json', true); // on charge le fichier complet
 
 httpRequest.onreadystatechange = function() {
     if (this.readyState === 4 && this.status == 200) {
