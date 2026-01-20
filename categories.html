@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Shop | E-COMMERCE WEBSITE </title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/content.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <div id="1"></div>
+    <script>
+        function load(url, id) {
+            let req = new XMLHttpRequest();
+            req.open("GET", url, false);
+            req.send(null);
+            document.getElementById(id).innerHTML = req.responseText;
+        }
+        load("header.html", "1");
+    </script>
+
+    <!-- MAIN CONTENT - Tous les produits -->
+    <div id="mainContainer">
+        <h1> Nos produits </h1>
+
+        <h2> Clothing </h2>
+        <div id="containerClothing"></div>
+
+        <h2> Accessories </h2>
+        <div id="containerAccessories"></div>
+
+        <h2> Healty </h2>
+        <div id="containerHealty"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="4"></div>
+    <script>
+        load("footer.html", "4");
+    </script>
+
+    <script src="content.js"></script>
+</body>
+</html>

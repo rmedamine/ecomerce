@@ -27,8 +27,17 @@ httpRequest.onreadystatechange = function()
 httpRequest.send(null);
 */
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
+
+  const showBtn = document.getElementById('showOrderFormBtn');
   const form = document.getElementById('orderForm');
+
+  showBtn.addEventListener('click', function () {
+    form.style.display = 'block';
+    showBtn.style.display = 'none'; // يخبي الزر من بعد
+  });
+
+  // ====== الكود ديالك القديم ======
   const messageEl = document.getElementById('message');
   const submitBtn = document.getElementById('submitBtn');
 
@@ -40,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
   form.addEventListener('submit', async function(e){
     e.preventDefault();
-    showMessage('', '');
 
     const fullName = form.querySelector('[name="fullName"]').value.trim();
     const phone = form.querySelector('[name="phone"]').value.trim();
@@ -64,14 +72,16 @@ document.addEventListener('DOMContentLoaded', function(){
       });
 
       const result = await res.json();
+
       if(result.success){
         showMessage('Merci, votre commande a été envoyée.','success');
         form.reset();
+        window.location.href = '/orderPlaced.html'; // 🔥 تحويل للنجاح
       } else {
         showMessage('Erreur: ' + result.error,'error');
       }
-    } catch(err) {
-      console.error(err);
+
+    } catch(err){
       showMessage('Erreur serveur ou réseau.','error');
     }
 
